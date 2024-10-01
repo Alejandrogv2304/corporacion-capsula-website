@@ -1,7 +1,14 @@
 import Logo from "@/app/_components/Logo";
 import Navegacion from "@/app/_components/navegacion";
-import "@/app/_styles/globals.css"
+import "@/app/_styles/globals.css";
+import { Josefin_Sans } from "next/font/google" ;
 
+const josefin = Josefin_Sans({
+  subsets: ["latin"],
+  display: "swap",
+});
+
+console.log(josefin)
 export const metadata={
 // title:'Corporacion Cápsula'
 title:{
@@ -13,7 +20,7 @@ description:"Lujoso hotel de capsulas, localizado en Colombia, UIS, zonas de des
 export default function RootLayout({children}){
   return(
     <html lang="en">
-      <body className="bg-primary-950 text-primary-100 min-h-screen">
+      <body className={` ${josefin.className} bg-primary-950 text-primary-100 min-h-screen`}>
         <header>
           <Logo/>
           <Navegacion/>
