@@ -7,7 +7,7 @@ export default function Page(){
     return(
         <div>
             
-            <h1>Tú Cuenta</h1>
+            <h2 className="font-semibold text-2xl text-accent-400 mb-7"> Bienvenido Alejandro</h2 >
         </div>
     ); 
 }
