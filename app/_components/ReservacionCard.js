@@ -69,11 +69,11 @@ function ReservationCard({ booking }) {
 
       <div className='flex flex-col border-l border-primary-800 w-[100px]'>
         <a
-          href={`/account/reservations/edit/${id}`}
+          href={`/cuenta/reservaciones/editar/${id}`}
           className='group flex items-center gap-2 uppercase text-xs font-bold text-primary-300 border-b border-primary-800 flex-grow px-3 hover:bg-accent-600 transition-colors hover:text-primary-900'
         >
           <PencilSquareIcon className='h-5 w-5 text-primary-600 group-hover:text-primary-800 transition-colors' />
-          <span className='mt-1'>Edit</span>
+          <span className='mt-1'>Editar</span>
         </a>
         <DeleteReservation bookingId={id} />
       </div>
