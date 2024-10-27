@@ -17,7 +17,7 @@ title:{
   template :"%s Corporacion Capsula",
   default:"Bienvenidos / Corporacion Capsula"
 },
-description:"Lujoso hotel de capsulas, localizado en Colombia, UIS, zonas de descanso, Bucaramanga",
+description:"Lujoso hotel de cápsulas, localizado en Colombia, UIS, zonas de descanso, Bucaramanga",
 };
 export default function RootLayout({children}){
   return(

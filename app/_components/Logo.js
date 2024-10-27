@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import logo from "@/public/logo.png";
+import logo from "@/public/logocapsulas1.svg";
 
 
 function Logo() {
@@ -15,7 +15,7 @@ function Logo() {
         alt="Corporacion Capsula logo"
       />
       <span className="text-xl font-semibold text-primary-100">
-        Corporacion Capsula
+        Corporación Cápsula
       </span>
     </Link>
   );
