@@ -1,6 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "slick-carousel/slick/slick.css"; 
+@import "slick-carousel/slick/slick-theme.css";
 
 @layer components {
   .spinner {
@@ -28,6 +30,13 @@
       transform: rotate(1turn);
     }
   }
+}
+.slick-slide > div {
+  margin: 0 10px;
+}
+
+.slick-dots li.slick-active button:before {
+  color:orange !important;
 }
 
 /* For data picker */
