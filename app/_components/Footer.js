@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Github from "@/public/icone-github-verde.png";
 import Linkedin from "@/public/icono-linkedin.png";
 
@@ -6,7 +7,10 @@ export default function Footer() {
       <footer className="bg-gray-800 text-white py-6">
         <div className="container mx-auto text-center">
           <p className="mb-4">© {new Date().getFullYear()} Desarrollo Web UIS. Todos los derechos reservados.</p>
-          <div className="flex justify-center space-x-6">
+          <Link href="/nosotros" className="mb-4 hover:text-yellow-400 transition-colors"> {/* Link a la página de Nosotros */}
+            Contáctanos
+          </Link>
+          <div className="flex justify-center space-x-6 mt-4">
             <a
               href="https://github.com/Alejandrogv2304/corporacion-capsula-website"
               target="_blank"
@@ -14,7 +18,7 @@ export default function Footer() {
               className="hover:text-gray-400 transition-colors"
             >
               {/* Ruta de la imagen del icono de GitHub */}
-              <img src={Github.src} alt="GitHub" className="w-8 h-8" />
+              <img c src={Github.src} alt="GitHub" className="w-8 h-8" />
             </a>
             <a
               href="https://www.linkedin.com/in/alejandro-gomez-a2452320a/"
