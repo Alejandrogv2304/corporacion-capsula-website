@@ -1,5 +1,6 @@
 import CapsulaCard from "@/app/_components/CapsulaCard";
 import Counter from "@/app/_components/Counter";
+import Footer from "@/app/_components/Footer";
 
 export const metadata={
     title:'Capsulas'
@@ -10,6 +11,7 @@ export const metadata={
         const cabins = [];
       
         return (
+          
           <div>
             <h1 className="text-4xl mb-5 text-accent-400 font-medium">
               Nuestras cápsulas
@@ -26,5 +28,7 @@ export const metadata={
               </div>
             )}
           </div>
+         
+          
         );
       }

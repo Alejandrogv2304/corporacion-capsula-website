@@ -3,6 +3,7 @@ import Navegacion from "@/app/_components/navegacion";
 import "@/app/_styles/globals.css";
 import { Josefin_Sans } from "next/font/google" ;
 import Header from "./_components/Header";
+import Footer from "./_components/Footer";
 
 
 const josefin = Josefin_Sans({
@@ -29,6 +30,7 @@ export default function RootLayout({children}){
         <div className="flex-1 px-8 py-12 grid">
         <main className="max-w-7xl  mx-auto w-full">{children}</main>
         </div>
+        <Footer/>
       </body>
     </html>
   );
