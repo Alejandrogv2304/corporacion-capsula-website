@@ -1,14 +1,17 @@
 import CapsulaCard from "@/app/_components/CapsulaCard";
 import Counter from "@/app/_components/Counter";
 import Footer from "@/app/_components/Footer";
+import { getCabins } from "../_lib/data_service";
 
 export const metadata={
     title:'Capsulas'
     };
 
-    export default function Page() {
+    export default async function Page() {
         // CHANGE
-        const cabins = [];
+        console.log('Starting...');
+        const cabins = await getCabins();
+        console.log(cabins);
       
         return (
           
