@@ -1,7 +1,8 @@
-import CapsulaCard from "@/app/_components/CapsulaCard";
-import Counter from "@/app/_components/Counter";
-import Footer from "@/app/_components/Footer";
-import { getCabins } from "../_lib/data_service";
+import CapsulaList from "@/app/_components/CapsulaList";
+import { Suspense } from "react";
+import Spinner from "../_components/Spinner";
+
+
 
 export const metadata={
     title:'Capsulas'
@@ -9,10 +10,7 @@ export const metadata={
 
     export default async function Page() {
         // CHANGE
-        console.log('Starting...');
-        const cabins = await getCabins();
-        console.log(cabins);
-      
+       
         return (
           
           <div>
@@ -22,14 +20,9 @@ export const metadata={
             <p className="text-primary-200 text-lg mb-10">
             Descubre una nueva experiencia de descanso en Bucaramanga con nuestras cápsulas de dormir al estilo japonés. Perfectas para viajeros, estudiantes y quienes buscan un refugio cómodo y privado, nuestras cápsulas están diseñadas para ofrecer un ambiente seguro, limpio y climatizado, con iluminación personal y acceso a WiFi. Disfruta de la comodidad y la privacidad de una cápsula moderna y relájate en el corazón de la ciudad. Ya sea para una siesta rápida o una noche completa, nuestras cápsulas son la opción ideal para recargar energías. 
             </p>
-      
-            {cabins.length > 0 && (
-              <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 xl:gap-14">
-                {cabins.map((cabin) => (
-                  <CapsulaCard cabin={cabin} key={cabin.id} />
-                ))}
-              </div>
-            )}
+            <Suspense fallback={<Spinner/>}>
+            <CapsulaList/>
+            </Suspense>
           </div>
          
           
