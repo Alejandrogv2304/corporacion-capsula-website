@@ -2,12 +2,16 @@
 import Image from "next/image";
 import image1 from "@/public/about-1.png";
 import Carrousel from "@/app/_components/Carrousel";
+import { getCabins } from "../_lib/data_service";
 
 export const metadata = {
   title: "Nosotros",
 };
 
-export default function Page() {
+export const revalidate = 86400;
+
+export default async function Page() {
+  const cabins = await getCabins();
   return (
     <div className="container mx-auto px-4 py-8 lg:py-16">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-x-8 gap-y-16 text-lg items-center">
@@ -27,7 +31,7 @@ export default function Page() {
               paz y tranquilidad en tu ocupado día.
             </p>
             <p>
-              Nuestras 8 cápsulas proveen un espacio acogedor para que
+              Nuestras {cabins.length} cápsulas proveen un espacio acogedor para que
               disfrutes tu tiempo de descanso en paz y armonía. Sin ningún tipo
               de ruido, con aire acondicionado y una serie de elementos relajantes
               para que disfrutes al máximo tu tiempo de descanso y te desconectes

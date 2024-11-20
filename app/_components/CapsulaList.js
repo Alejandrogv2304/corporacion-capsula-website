@@ -1,8 +1,9 @@
+import {unstable_noStore as noStore} from "next/cache";
 import CapsulaCard from "./CapsulaCard";
 import { getCabins } from "../_lib/data_service";
 
 async function CapsulaList(){
-
+  noStore();
     const cabins = await getCabins();
 
     if(!cabins.length) return null;
