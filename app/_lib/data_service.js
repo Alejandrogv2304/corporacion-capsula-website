@@ -12,7 +12,7 @@ export async function getCabin(id) {
     .eq('id', id)
     .single();
 
-  // For testing
+  // Para testeo
   await new Promise((res) => setTimeout(res, 2000));
 
   if (error) {
@@ -51,7 +51,7 @@ export const getCabins = async function () {
   return data;
 };
 
-// Guests are uniquely identified by their email address
+// Los huespedes se identifican por el email
 export async function getGuest(email) {
   const { data, error } = await supabase
     .from('huespedes')
@@ -59,7 +59,7 @@ export async function getGuest(email) {
     .eq('email', email)
     .single();
 
-  // No error here! We handle the possibility of no guest in the sign in callback
+  
   return data;
 }
 
@@ -81,7 +81,7 @@ export async function getBooking(id) {
 export async function getBookings(guestId) {
   const { data, error, count } = await supabase
     .from('reservas')
-    // We actually also need data on the cabins as well. But let's ONLY take the data that we actually need, in order to reduce downloaded data.
+//Tomamos solo los datos que realmente necesitamos para reducir las descargas de datos
     .select(
       'id, created_at, startDate, endDate, numNights, numGuests, totalPrice, guestId, cabinId, cabins(name, image)'
     )
