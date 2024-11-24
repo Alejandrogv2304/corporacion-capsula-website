@@ -28,6 +28,27 @@ export async function updateGuest(formData) {
   revalidatePath("/cuenta/perfil");
 }
 
+export async function deleteReservation(bookingId) {
+  const session = await auth();
+  if (!session) throw new Error("Debes iniciar sesión");
+
+  const guestBookings = await getBookings(session.user.guestId);
+  const guestBookingIds = guestBookings.map((booking) => booking.id);
+
+  if (!guestBookingIds.includes(bookingId))
+    throw new Error("No puedes elmiminar esta reservación");
+
+  const { error } = await supabase
+    .from("reservas")
+    .delete()
+    .eq("id", bookingId);
+
+  if (error) throw new Error("Esta reserva no pudo ser borrada");
+
+  revalidatePath("/cuenta/reservaciones");
+}
+
+
 export async function signInAction() {
   await signIn("google", { redirectTo: "/cuenta" });
 }
