@@ -83,9 +83,9 @@ export async function getBookings(guestId) {
     .from('reservas')
 //Tomamos solo los datos que realmente necesitamos para reducir las descargas de datos
     .select(
-      'id, created_at, startDate, endDate, numNights, numGuests, totalPrice, guestId, cabinId, cabins(name, image)'
+      'id, created_at, startDate, EndDate, NumNights, numGuests, totalPrice, GuestId, cabinId, capsulas(name, image)'
     )
-    .eq('guestId', guestId)
+    .eq('GuestId', guestId)
     .order('startDate');
 
   if (error) {
@@ -138,16 +138,34 @@ export async function getSettings() {
 }
 
 export async function getCountries() {
+  const GET_COUNTRY_URL = "https://flagcdn.com";
   try {
-    const res = await fetch(
-      'https://restcountries.com/v2/all?fields=name,flag'
-    );
-    const countries = await res.json();
+    const res = await fetch(`${GET_COUNTRY_URL}/en/codes.json`);
+ 
+    const data = await res.json();
+ 
+    const countries = Object.keys(data).map((key) => {
+      return { name: data[key], flag: `${GET_COUNTRY_URL}/${key}.svg` };
+    });
+ 
+//This will return an array with the same format as the one from the original getCountries so we don't have to change the code in other files.
+ 
     return countries;
   } catch {
-    throw new Error('Could not fetch countries');
+    throw new Error("Could not fetch countries");
   }
 }
+// export async function getCountries() {
+//   try {
+//     const res = await fetch(
+//       'https://restcountries.com/v2/all?fields=name,flag'
+//     );
+//     const countries = await res.json();
+//     return countries;
+//   } catch {
+//     throw new Error('Could not fetch countries');
+//   }
+// }
 
 /////////////
 // CREATE
