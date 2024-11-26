@@ -5,12 +5,12 @@ import { getBooking, getCabin } from "@/app/_lib/data_service";
 export default async function Page({ params }) {
   const { bookingId } = params;
   const { numGuests, observations, cabinId } = await getBooking(bookingId);
-  const { maxCapacity } = await getCabin(capsulaId);
+  const { maxCapacity } = await getCabin(cabinId);
 
   return (
     <div>
       <h2 className="font-semibold text-2xl text-accent-400 mb-7">
-        Editar Reservacion #{bookingId}
+        Edit Reservation #{bookingId}
       </h2>
 
       <form
@@ -29,7 +29,7 @@ export default async function Page({ params }) {
             required
           >
             <option value="" key="">
-              Selecciona número de huespedes...
+              Select number of guests...
             </option>
             {Array.from({ length: maxCapacity }, (_, i) => i + 1).map((x) => (
               <option value={x} key={x}>
@@ -41,7 +41,7 @@ export default async function Page({ params }) {
 
         <div className="space-y-2">
           <label htmlFor="observations">
-            Algo que debamos saber?
+            Anything we should know about your stay?
           </label>
           <textarea
             name="observations"
@@ -51,8 +51,8 @@ export default async function Page({ params }) {
         </div>
 
         <div className="flex justify-end items-center gap-6">
-          <SubmitButton pendingLabel="Actualizando...">
-            Actualizar reservacion
+          <SubmitButton pendingLabel="Updating...">
+            Update reservation
           </SubmitButton>
         </div>
       </form>

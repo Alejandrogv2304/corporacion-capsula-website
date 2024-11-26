@@ -64,45 +64,22 @@ export async function getGuest(email) {
 }
 
 
-export async function getBooking(id) {
-  console.log('ID recibido:', id);  // Verifica el valor de id
-
-  const idNumber = Number(id);
-
-  if (isNaN(idNumber)) {
-    console.error('ID no válido:', id);  // Verifica el valor antes de lanzar el error
-    throw new Error('ID no válido para la reserva');
-  }
-
-  const { data, error } = await supabase
-    .from('reservas')
-    .select('*')
-    .eq('id', idNumber)
-    .single();
-
-  if (error) {
-    console.error('Error de Supabase:', error.message);
-    throw new Error('La reserva no se pudo cargar');
-  }
-
-  return data;
-}
 
 
-// export async function getBooking(id) {
-//   const { data, error, count } = await supabase
-//     .from('reservas')
-//     .select('*')
-//     .eq('id', id)
-//     .single();
+ export async function getBooking(id) {
+   const { data, error, count } = await supabase
+     .from('reservas')
+     .select('*')
+     .eq('id', id)
+     .single();
 
-//   if (error) {
-//     console.error(error);
-//     throw new Error('La reserva no se pudo cargar');
-//   }
+   if (error) {
+     console.error(error);
+     throw new Error('La reserva no se pudo cargar');
+   }
 
-//   return data;
-// }
+   return data;
+ }
 
 export async function getBookings(guestId) {
   const { data, error, count } = await supabase
