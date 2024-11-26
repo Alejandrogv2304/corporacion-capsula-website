@@ -29,7 +29,7 @@ export default async function Page({ params }) {
             required
           >
             <option value="" key="">
-              Select number of guests...
+              Selecciona número de huespedes...
             </option>
             {Array.from({ length: maxCapacity }, (_, i) => i + 1).map((x) => (
               <option value={x} key={x}>
@@ -41,7 +41,7 @@ export default async function Page({ params }) {
 
         <div className="space-y-2">
           <label htmlFor="observations">
-            Anything we should know about your stay?
+            Algo que debamos saber?
           </label>
           <textarea
             name="observations"
@@ -52,7 +52,7 @@ export default async function Page({ params }) {
 
         <div className="flex justify-end items-center gap-6">
           <SubmitButton pendingLabel="Updating...">
-            Update reservation
+            Actualizar reservacion
           </SubmitButton>
         </div>
       </form>

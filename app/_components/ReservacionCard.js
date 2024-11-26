@@ -30,7 +30,7 @@ function ReservationCard({ booking, onDelete }) {
       <div className="relative h-32 aspect-square">
         <Image
           src={image}
-          alt={`Cabin ${name}`}
+          alt={`Cápsula ${name}`}
           fill
           className="object-cover border-r border-primary-800"
         />
@@ -39,15 +39,15 @@ function ReservationCard({ booking, onDelete }) {
       <div className="flex-grow px-6 py-3 flex flex-col">
         <div className="flex items-center justify-between">
           <h3 className="text-xl font-semibold">
-            {NumNights} nights in Cabin {name}
+            {NumNights} noches en Cápsula {name}
           </h3>
           {isPast(new Date(startDate)) ? (
             <span className="bg-yellow-800 text-yellow-200 h-7 px-3 uppercase text-xs font-bold flex items-center rounded-sm">
-              past
+              pasada
             </span>
           ) : (
             <span className="bg-green-800 text-green-200 h-7 px-3 uppercase text-xs font-bold flex items-center rounded-sm">
-              upcoming
+              pronto
             </span>
           )}
         </div>
@@ -64,10 +64,10 @@ function ReservationCard({ booking, onDelete }) {
           <p className="text-xl font-semibold text-accent-400">${totalPrice}</p>
           <p className="text-primary-300">&bull;</p>
           <p className="text-lg text-primary-300">
-            {numGuests} guest{numGuests > 1 && "s"}
+            {numGuests} huesped{numGuests > 1 && "s"}
           </p>
           <p className="ml-auto text-sm text-primary-400">
-            Booked {format(new Date(created_at), "EEE, MMM dd yyyy, p")}
+            Reserva {format(new Date(created_at), "EEE, MMM dd yyyy, p")}
           </p>
         </div>
       </div>

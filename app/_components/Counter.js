@@ -6,7 +6,7 @@ export default function Counter({users}){
 
     console.log(users)
     return <div>
-    <p>Aquí hay {users.length} users</p>
+    <p>Aquí hay {users.length} usuarios</p>
     <button onClick={()=>setCount((c)=>c+1)}>{count}</button>
     </div>
 }

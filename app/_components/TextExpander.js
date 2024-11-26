@@ -8,7 +8,7 @@ function TextExpander({ children }) {
 
   const displayText = isExpanded
     ? children
-    : children.split(" ").slice(0, 40).join(" ") + "...";
+    : children.split(" ").slice(0, 20).join(" ") + "...";
 
   return (
     <span>
@@ -17,7 +17,7 @@ function TextExpander({ children }) {
         className="text-primary-700 border-b border-primary-700 leading-3 pb-1"
         onClick={() => setIsExpanded(!isExpanded)}
       >
-        {isExpanded ? "Show less" : "Show more"}
+        {isExpanded ? "Mostrar menos" : "Mostrar más"}
       </button>
     </span>
   );
