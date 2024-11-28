@@ -1,10 +1,29 @@
 "use client";
 
+import SubmitButton from "./SubmitButton";
+import { createBooking } from "../_lib/actions";
 import { useReservation } from "./ReservationContext";
+import { differenceInDays } from "date-fns";
 
 function ReservationForm({ cabin , user}) {
-  const { range } = useReservation();
-  const { maxCapacity } = cabin;
+  const { range, resetRange } = useReservation();
+  const { maxCapacity, regularPrice, discount, id } = cabin;
+
+  const startDate = range.from;
+  const EndDate = range.to;
+
+  const NumNights = differenceInDays(EndDate, startDate);
+  const cabinPrice = NumNights * (regularPrice - discount);
+
+  const bookingData = {
+    startDate,
+    EndDate,
+    NumNights,
+    cabinPrice,
+    cabinId: id,
+  };
+
+  const createBookingWithData = createBooking.bind(null, bookingData);
 
   return (
     <div className="scale-[1.01]">
@@ -24,7 +43,10 @@ function ReservationForm({ cabin , user}) {
       </div>
 
      
-      <form className="bg-primary-900 py-10 px-16 text-lg flex gap-5 flex-col">
+      <form action={async (formData) => {
+          await createBookingWithData(formData);
+          resetRange();
+        }} className="bg-primary-900 py-10 px-16 text-lg flex gap-5 flex-col">
         <div className="space-y-2">
           <label htmlFor="numGuests">Cuántos son?</label>
           <select
@@ -57,11 +79,13 @@ function ReservationForm({ cabin , user}) {
         </div>
 
         <div className="flex justify-end items-center gap-6">
-          <p className="text-primary-300 text-base">Selecciona las fechas</p>
-
-          <button className="bg-accent-500 px-8 py-4 text-primary-800 font-semibold hover:bg-accent-600 transition-all disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-300">
-            Reserva ahora
-          </button>
+          {!(startDate && EndDate) ? (
+            <p className="text-primary-300 text-base">
+              Selecciona las fechas
+            </p>
+          ) : (
+            <SubmitButton pendingLabel="Reserving...">Reserve ahora</SubmitButton>
+          )}
         </div>
       </form>
     </div>

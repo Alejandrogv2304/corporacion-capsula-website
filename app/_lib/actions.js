@@ -28,7 +28,97 @@ export async function updateGuest(formData) {
   revalidatePath("/cuenta/perfil");
 }
 
-export async function deleteReservation(bookingId) {
+
+export async function createBooking(bookingData, formData) {
+  console.log("Iniciando createBooking...");
+
+  // Validar sesión
+  const session = await auth();
+  if (!session) {
+    console.error("Error: El usuario no está autenticado.");
+    throw new Error("Debes iniciar sesión para crear una reserva.");
+  }
+  console.log("Sesión autenticada:", session);
+
+  // Validar datos del formulario
+  const numGuests = formData.get("numGuests");
+  const observations = formData.get("observations");
+  if (!numGuests || isNaN(Number(numGuests))) {
+    console.error("Error: El número de huéspedes es inválido o no fue proporcionado.");
+    throw new Error("El número de huéspedes es obligatorio y debe ser un número válido.");
+  }
+
+  // Validar datos de la reserva
+  if (!bookingData.cabinPrice) {
+    console.error("Error: El precio de la cabaña no está definido.");
+    throw new Error("El precio de la cabaña es obligatorio.");
+  }
+  if (!bookingData.cabinId) {
+    console.error("Error: El ID de la cápsula no está definido.");
+    throw new Error("El ID de la cápsula es obligatorio.");
+  }
+
+  // Construir el objeto newBooking
+  const newBooking = {
+    ...bookingData,
+    GuestId: session.user.guestId, // Validar que guestId existe
+    numGuests: Number(numGuests),
+    observations: (observations || "").slice(0, 1000), // Evitar errores con observaciones nulas
+    extrasPrice: 0,
+    totalPrice: bookingData.cabinPrice,
+    isPaid: false,
+    hasBreakfast: false,
+    status: "unconfirmed",
+  };
+  console.log("Datos de la reserva a insertar:", newBooking);
+
+  // Insertar en la tabla `reservas`
+  const { error } = await supabase.from("reservas").insert([newBooking]);
+
+  if (error) {
+    console.error("Error de Supabase al insertar la reserva:", error);
+    throw new Error("No se pudo crear la reserva. Por favor, intenta nuevamente.");
+  }
+
+  // Revalidar la página relacionada con la cápsula
+  try {
+    await revalidatePath(`/capsulas/${bookingData.cabinId}`);
+  } catch (revalidateError) {
+    console.warn("Error al revalidar la ruta:", revalidateError);
+  }
+
+  // Redirigir al usuario a la página de agradecimiento
+  redirect("/capsulas/gracias");
+}
+
+// export async function createBooking(bookingData, formData) {
+//   const session = await auth();
+//   if (!session) throw new Error("Tú debes logearte:");
+
+//   const newBooking = {
+//     ...bookingData,
+//     guestId: session.user.guestId,
+//     numGuests: Number(formData.get("numGuests")),
+//     observations: formData.get("observations").slice(0, 1000),
+//     extrasPrice: 0,
+//     totalPrice: bookingData.cabinPrice,
+//     isPaid: false,
+//     hasBreakfast: false,
+//     status: "unconfirmed",
+//   };
+
+//   const { error } = await supabase.from("reservas").insert([newBooking]);
+
+//   if (error) throw new Error("No se pudo crear la reserva");
+
+//   revalidatePath(`/capsulas/${bookingData.capsulaId}`);
+
+//   redirect("/capsulas/gracias");
+// }
+
+
+
+export async function deleteBooking(bookingId) {
   const session = await auth();
   if (!session) throw new Error("Debes iniciar sesión");
 
