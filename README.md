@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Corporación Cápsula - Website 🚀
 
-## Getting Started
+Bienvenido al repositorio del sitio web de **Corporación Cápsula**, diseñado para ofrecer una experiencia intuitiva y moderna. A continuación, encontrarás las instrucciones para acceder y ejecutar la aplicación.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Acceso a la Aplicación 🌐
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Método Recomendado (Desplegado en la Web)
+Para mayor facilidad, la aplicación está desplegada en línea. 
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+1. **Acceda al siguiente enlace:**
+   👉 [corporacion-capsula-demo.vercel.app](https://corporacion-capsula-demo.vercel.app)
+   
+2. **Inicie sesión:**
+   - **Correo:** `capsulacorporacion35@gmail.com`  
+   - **Contraseña:** `capsula123`  
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+3. Una vez dentro:
+   - Diríjase a la sección **Zona de Invitados**.
+   - Seleccione **Continuar con Google**.
+   - Use las credenciales anteriores para acceder a todas las secciones de la página.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+### Segundo Método (Ejecución Local)
+Este método requiere que descargue y ejecute el proyecto localmente. **Recomendado solo para revisiones técnicas.**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Descargue el repositorio:**
+   - Visite el repositorio en GitHub: 👉 [corporacion-capsula-website](https://github.com/Alejandrogv2304/corporacion-capsula-website)
+   - Seleccione la opción **Code** y descargue el proyecto comprimido.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+2. **Agregue las credenciales:**
+   - Solicite al administrador el archivo con las credenciales necesarias.
+   - Coloque el archivo en el directorio del proyecto según las instrucciones proporcionadas.
 
-## Deploy on Vercel
+3. **Instale dependencias:**
+   - Abra una terminal en el directorio del proyecto y ejecute:
+     ```bash
+     npm install next react react-dom
+     ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. **Ejecute la aplicación:**
+   - Después de instalar las dependencias, inicie el servidor local con:
+     ```bash
+     npm run dev
+     ```
+   - Acceda al enlace generado en la terminal para visualizar la aplicación.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+---
+
+## Posibles Problemas ⚠️
+- Si experimenta problemas al ejecutar la aplicación localmente, utilice el método recomendado para acceder al sitio web en línea.
+- En caso de querer revisar el código fuente, puede descargar el repositorio desde GitHub y explorarlo en su editor de preferencia.
+
+---
+
+### Tecnologías Utilizadas 🛠️
+- **Framework:** Next.js  NodeJs
+- **Librerías:** React, React DOM  
+- **Despliegue:** Vercel  
+
+---
+
+Si tienes alguna pregunta o sugerencia, no dudes en crear un [issue](https://github.com/Alejandrogv2304/corporacion-capsula-website/issues) en este repositorio. 😊
